@@ -22,9 +22,9 @@ class User(BaseModel, Base):
         reviews (sqlalchemy relationship): The user-Review relationship.
 
     """
-    __tablename__ = 'users'
 
     if getenv('HBNB_TYPE_STORAGE') == 'db':
+        __tablename__ = 'users'
         email = Column(string(128), nullable=False)
         password = Column(string(128), nullable=False)
         first_name = Column(string(128))
