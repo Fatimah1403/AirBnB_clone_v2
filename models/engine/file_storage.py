@@ -10,16 +10,12 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a  the list of objects of one type of class."""
-        return FileStorage.__objects
-#       if cls is not None:
-#         if type(cls) == str:
-#            cls = eval(cls)
-#       class_dict = {}
-#      for key, value in self.__objects.items():
-#         if type(val) == cls:
-#            class_dict[key] = value
-#            return class_dict
-#       return self.objects
+        if cls is  None:
+            return self.__objects
+        return {
+                k: v for k, v in self.__objects.item()
+                if type(v) is cls
+            }
 
     def new(self, obj):
         """Adds new object to storage dictionary"""

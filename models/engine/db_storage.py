@@ -73,7 +73,12 @@ class DBStorage:
 
     def reload(self):
         """ creates the current database session """
-        Base.metadata.create_all(self.__engine)
-        session_rel = (bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(session_rel)
-        self.session = Session()
+        try:
+            Base.metadata.create_all(self.__engine)
+            session_rel = sessionmaker(bind=self.__engine, expire_on_commit=False)
+            self.__session = scoped_session(session_factory)
+        except Exception as E:
+            print(E)
+    def close(self):
+        """ remove our session"""
+        self.__session.remove()
