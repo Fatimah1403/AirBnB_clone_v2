@@ -6,7 +6,9 @@ from models.base_model import BaseModel, Base
 from os import getenv
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String
+from sqlalchemy.ext.declarative import declarative_base
 
+Base = declarative_base()
 
 class User(BaseModel, Base):
     """Representation of a user """
