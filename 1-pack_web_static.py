@@ -16,4 +16,4 @@ def do_pack():
         return "versions/web_static_{}.tgz".format(date)
 
     except Exception as e:
-        return Nonei
+        return None
