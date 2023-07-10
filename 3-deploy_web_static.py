@@ -4,11 +4,11 @@ from datetime import datetime
 from fabric.api import env
 from fabric.api import local, run, put
 
-env.hosts = []
+env.hosts = ['54.161.253.93', '100.26.212.36']
 env.user = 'ubuntu'
 
 
-def deploy():
+def do_pack():
     """ creates and distributes an archive to your
     web servers, using the function deploy"""
     dt = datetime.utcnow()
