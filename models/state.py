@@ -3,7 +3,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
 from models.city import City
-from sqlalchemy import Column, String, integer
+from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 import models
 import os
@@ -13,7 +13,7 @@ import shlex
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = 'states'
-    name = Column(string(128), nullable=False)
+    name = Column(String(128), nullable=False)
     cities = relationship("City", cascade="all, delete, delete-orphan",
                           backref="state")
 
