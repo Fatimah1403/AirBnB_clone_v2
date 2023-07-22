@@ -10,7 +10,7 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a  the list of objects of one type of class."""
-        if cls is  None:
+        if cls is None:
             return self.__objects
         return {
                 k: v for k, v in self.__objects.item()
