@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
+from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
 from models.city import City
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, integer
 from sqlalchemy.orm import relationship
 import models
 import os
+import shlex
+
 
 class State(BaseModel, Base):
     """ State class """
@@ -22,9 +25,15 @@ class State(BaseModel, Base):
         relationship between State and City
 
         """
-        values_city = models.storage.all("city").values()
-        city_list = []
-        for city in values_city:
-            if city.state_id == self.id:
-                city_list.append(city)
-        return city_list
+        var = models.storage.all()
+        lista = []
+        result = []
+        for key in var:
+            city = key.replace('.', ' ')
+            city = shlex.split(city)
+            if (city[0] == 'City'):
+                lista.append(var[key])
+        for elem in lista:
+            if (elem.state_id == self.id):
+                result.append(elem)
+        return (result)
