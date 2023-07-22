@@ -75,10 +75,12 @@ class DBStorage:
         """ creates the current database session """
         try:
             Base.metadata.create_all(self.__engine)
-            session_rel = sessionmaker(bind=self.__engine, expire_on_commit=False)
+            session_rel = sessionmaker(bind=self.__engine,
+                                       expire_on_commit=False)
             self.__session = scoped_session(session_factory)
         except Exception as E:
             print(E)
+
     def close(self):
         """ remove our session"""
-        self.__session.remove()
+        self.__session.close()
