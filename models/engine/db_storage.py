@@ -2,7 +2,8 @@
 """DataStorage file """
 import json
 from os import getenv
-from models.base_model import BaseModel
+from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.ext.declarative import declarative_base
 from models.user import User
 from models.state import State
 from models.city import City
