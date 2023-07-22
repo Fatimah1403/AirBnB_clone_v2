@@ -22,8 +22,9 @@ class State(BaseModel, Base):
         relationship between State and City
 
         """
-        Clist = []
-        for city in list(models.storage.all(City).values()):
+        values_city = models.storage.all("city").values()
+        city_list = []
+        for city in values_city:
             if city.state_id == self.id:
                 city_list.append(city)
-        return Clist
+        return city_list
